@@ -36,6 +36,7 @@ public class RisoluzioneEsercizioCity {
 		PreparedStatement altroStatement = connessione.prepareStatement("select *, MAX(SurfaceArea)  kmq from country where GovernmentForm = ?");
 		altroStatement.setString(1, stato);
 		ResultSet executeQuery2 = altroStatement.executeQuery();
+		
 		while (executeQuery2.next()) {
 			String formaDiGoverno = executeQuery2.getString("name");
 			String superficie = executeQuery2.getString("kmq");
