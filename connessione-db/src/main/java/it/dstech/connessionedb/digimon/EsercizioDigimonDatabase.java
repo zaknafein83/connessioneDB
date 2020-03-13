@@ -28,8 +28,9 @@ public class EsercizioDigimonDatabase {
 
 	private static boolean checkInsert(Digimon digimon, Connection connessione) throws SQLException {
 		PreparedStatement prepareStatement = connessione
-				.prepareStatement("Select evoluzione from digimon where nome = ?;");
+				.prepareStatement("Select evoluzione from digimon where nome = ? and evoluzione ?;");
 		prepareStatement.setString(1, digimon.getName());
+		prepareStatement.setString(2, digimon.getEvo());
 		ResultSet risultato = prepareStatement.executeQuery();
 		while (risultato.next()) {
 			if (digimon.getEvo().equals(risultato.getString("evoluzione"))) {
