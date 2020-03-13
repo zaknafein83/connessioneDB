@@ -15,21 +15,27 @@ public class CreazioneDigimon {
 		String url = "jdbc:mysql://localhost:3306/digimon?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false";
 		Scanner scanner = new Scanner(System.in);
 		Connection connessione = DriverManager.getConnection(url, username, password);
-		String queryInserimentoDigimon = "INSERT INTO digimon (nome, attacco, difesa, resistenza, evoluzione) VALUES (?, ?, ?, ?, ?);";
+		String queryInserimentoDigimon = "INSERT INTO digimon (nome, attacco, HP, difesa, resistenza, evoluzione) VALUES (?, ?, ?, ?, ?, ?);";
+		
 		PreparedStatement prepareStatement = connessione.prepareStatement(queryInserimentoDigimon);
 		System.out.println("Inserisci il nome");
 		prepareStatement.setString(1, scanner.nextLine());
 		System.out.println("Inserisci l'attacco");
 		prepareStatement.setInt(2, scanner.nextInt());
 		scanner.nextLine();
-		System.out.println("Inserisci la difesa");
+		System.out.println("Inserisci gli HP");
 		prepareStatement.setInt(3, scanner.nextInt());
 		scanner.nextLine();
-		System.out.println("Inserisci la resistenza");
+		System.out.println("Inserisci la difesa");
 		prepareStatement.setInt(4, scanner.nextInt());
 		scanner.nextLine();
+		System.out.println("Inserisci la resistenza");
+		prepareStatement.setInt(5, scanner.nextInt());
+		scanner.nextLine();
 		System.out.println("Inserisci l'evoulizone");
-		prepareStatement.setString(5, scanner.nextLine());
+		prepareStatement.setString(6, scanner.nextLine());
+
+		
 		prepareStatement.execute();
 		scanner.close();
 		
